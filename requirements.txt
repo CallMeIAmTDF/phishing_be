@@ -1,0 +1,6 @@
+fastapi~=0.115.4
+beautifulsoup4~=4.12.3
+requests~=2.32.3
+googlesearch-python
+python-whois
+python-dateutil~=2.9.0.post0
