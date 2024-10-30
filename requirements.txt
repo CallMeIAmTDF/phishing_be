@@ -4,3 +4,7 @@ requests~=2.32.3
 googlesearch-python
 python-whois
 python-dateutil~=2.9.0.post0
+scikit-learn~=1.5.2
+starlette~=0.41.2
+whois~=1.20240129.2
+uvicorn~=0.32.0

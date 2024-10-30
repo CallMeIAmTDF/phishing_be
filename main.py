@@ -2,14 +2,24 @@ import json
 import pickle
 from random import random
 
+import uvicorn
 from sklearn.ensemble import RandomForestClassifier
 from fastapi import FastAPI
 import datetime
 import time
+from starlette.middleware.cors import CORSMiddleware
 from URLAnalysis import generate_data_set
 from starlette.websockets import WebSocket, WebSocketDisconnect
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # can alter with time
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = pickle.load(open('final_model.pkl', 'rb'))
 
@@ -106,3 +116,5 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         connected_clients.remove(websocket)
 
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
